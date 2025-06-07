@@ -2,6 +2,7 @@ import {Request, Response} from "express";
 import {container} from "tsyringe";
 import AddProdutoVariacaoService from "../services/AddProdutoVariacaoService";
 import UpdateProdutoVariacaoService from "../services/UpdateProdutoVariacaoService";
+import DeleteProdutoVariacaoService from "../services/DeleteProdutoVariacaoService";
 import produtoVariacaoResponseDTO from "../dto/produtoVariacaoResponseDTO";
 
 export default class ProdutoVariacaoController {
@@ -21,6 +22,13 @@ export default class ProdutoVariacaoController {
             id: Number(id), tamanho, preco
         });
         return response.json(produtoVariacaoResponseDTO(produtoVariacao));
+    }
+
+    public async delete(request: Request, response: Response): Promise<Response> {
+        const {id} = request.params;
+        const deleteProdutoVariacao = container.resolve(DeleteProdutoVariacaoService);
+        await deleteProdutoVariacao.execute(Number(id));
+        return response.status(204).send();
     }
 
 }

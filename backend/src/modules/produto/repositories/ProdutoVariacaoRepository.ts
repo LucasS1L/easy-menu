@@ -33,4 +33,8 @@ export class ProdutoVariacaoRepository {
     public async update(produtoVariacao: ProdutoVariacao): Promise<void> {
         await this.ormRepository.save(produtoVariacao);
     }
+
+    public async delete(produtoVariacao: ProdutoVariacao): Promise<void> {
+        await this.ormRepository.remove(produtoVariacao);
+    }
 }

@@ -29,4 +29,8 @@ produtoVariacaoRouter.patch("/:id",
     produtoVariacaoController.update
 );
 
+produtoVariacaoRouter.delete("/:id",
+    produtoVariacaoController.delete
+);
+
 export default produtoVariacaoRouter;
