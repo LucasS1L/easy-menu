@@ -6,5 +6,5 @@ build/
 coverage
 dist
 
-temp/*
-!temp/.gitkeep
+uploads/*
+!uploads/.gitkeep

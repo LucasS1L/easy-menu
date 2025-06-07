@@ -1,9 +1,13 @@
 import ProdutoController from "../controllers/ProdutoController";
 import {Router} from "express";
 import {celebrate, Joi, Segments} from "celebrate";
+import multer from "multer";
+import uploadConfig from "../../../config/upload";
+import verificaProdutoExiste from "../middlewares/verificaProduto";
 
 const produtoRouter = Router();
 const produtoController = new ProdutoController();
+const upload = multer(uploadConfig);
 
 produtoRouter.get("/",
     produtoController.index
@@ -41,6 +45,17 @@ produtoRouter.patch("/:id",
         }).or("nome", "descricao"),
     }),
     produtoController.update
+);
+
+produtoRouter.patch("/:id/imagem",
+    celebrate({
+        [Segments.PARAMS]: {
+            id: Joi.number().integer().min(1).required(),
+        },
+    }),
+    verificaProdutoExiste,
+    upload.single("imagem"),
+    produtoController.updateImagem
 );
 
 export default produtoRouter;
