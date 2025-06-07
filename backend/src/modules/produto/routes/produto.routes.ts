@@ -5,6 +5,19 @@ import {celebrate, Joi, Segments} from "celebrate";
 const produtoRouter = Router();
 const produtoController = new ProdutoController();
 
+produtoRouter.get("/",
+    produtoController.index
+);
+
+produtoRouter.get("/:id",
+    celebrate({
+        [Segments.PARAMS]: {
+            id: Joi.number().integer().min(1).required(),
+        },
+    }),
+    produtoController.show
+);
+
 produtoRouter.post("/",
     celebrate({
         [Segments.BODY]: {

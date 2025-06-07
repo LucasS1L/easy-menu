@@ -10,6 +10,30 @@ export class ProdutoRepository {
         this.ormRepository = dataSource.getRepository(Produto);
     }
 
+    public async findAll(): Promise<Produto[]> {
+        return await this.ormRepository.find(
+            {
+                relations: ["produtoVariacao"],
+                order: {
+                    criado_em: "ASC",
+                    produtoVariacao: {
+                        preco: "ASC",
+                    }
+                }
+            });
+    }
+
+    public async findById(id: number): Promise<Produto | null> {
+        return await this.ormRepository.findOne({
+            where: {id}, relations: ["produtoVariacao"],
+            order: {
+                produtoVariacao: {
+                    preco: "ASC",
+                }
+            }
+        });
+    }
+
     public async findByNome(nome: string): Promise<Produto | null> {
         return await this.ormRepository.findOneBy({nome});
     }
