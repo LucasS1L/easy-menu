@@ -47,6 +47,15 @@ produtoRouter.patch("/:id",
     produtoController.update
 );
 
+produtoRouter.get("/:id/imagem",
+    celebrate({
+        [Segments.PARAMS]: {
+            id: Joi.number().integer().min(1).required(),
+        },
+    }),
+    produtoController.showImagem
+);
+
 produtoRouter.patch("/:id/imagem",
     celebrate({
         [Segments.PARAMS]: {
