@@ -10,6 +10,10 @@ export class ProdutoVariacaoRepository {
         this.ormRepository = dataSource.getRepository(ProdutoVariacao);
     }
 
+    public async findById(id: number): Promise<ProdutoVariacao | null> {
+        return await this.ormRepository.findOne({where: {id}, relations: ["produto"]});
+    }
+
     public async findDuplicated(tamanho: string, produtoId: number): Promise<ProdutoVariacao | null> {
         return await this.ormRepository.findOne({
             relations: ["produto"], where: {
@@ -24,5 +28,9 @@ export class ProdutoVariacaoRepository {
         const produtoVariacao = this.ormRepository.create({produto, tamanho, preco});
         await this.ormRepository.save(produtoVariacao);
         return produtoVariacao;
+    }
+
+    public async update(produtoVariacao: ProdutoVariacao): Promise<void> {
+        await this.ormRepository.save(produtoVariacao);
     }
 }

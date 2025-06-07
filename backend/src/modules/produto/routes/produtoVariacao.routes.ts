@@ -16,4 +16,17 @@ produtoVariacaoRouter.post("/",
     produtoVariacaoController.add
 );
 
+produtoVariacaoRouter.patch("/:id",
+    celebrate({
+        [Segments.PARAMS]: {
+            id: Joi.number().integer().min(1).required(),
+        },
+        [Segments.BODY]: Joi.object().keys({
+            tamanho: Joi.string().trim().max(10),
+            preco: Joi.number().precision(2),
+        }).or("tamanho", "preco"),
+    }),
+    produtoVariacaoController.update
+);
+
 export default produtoVariacaoRouter;
