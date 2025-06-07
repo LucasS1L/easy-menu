@@ -1,6 +1,8 @@
 import {DataSource} from "typeorm";
 import {CreateProduto1729343362869} from "./migrations/1729343362869-CreateProduto";
 import {CreateProdutoVariacao1729344946640} from "./migrations/1729344946640-CreateProdutoVariacao";
+import Produto from "../../modules/produto/entities/Produto";
+import ProdutoVariacao from "../../modules/produto/entities/ProdutoVariacao";
 import {addTransactionalDataSource, initializeTransactionalContext} from "typeorm-transactional";
 import {config} from "dotenv";
 import path from "path";
@@ -15,6 +17,8 @@ export const dataSource = new DataSource({
     password: process.env.DB_PASS,
     database: process.env.DB_NAME,
     entities: [
+        Produto,
+        ProdutoVariacao
     ],
     migrations: [
         CreateProduto1729343362869,
