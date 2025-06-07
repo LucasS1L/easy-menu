@@ -67,4 +67,13 @@ produtoRouter.patch("/:id/imagem",
     produtoController.updateImagem
 );
 
+produtoRouter.delete("/:id",
+    celebrate({
+        [Segments.PARAMS]: {
+            id: Joi.number().integer().min(1).required(),
+        },
+    }),
+    produtoController.delete
+);
+
 export default produtoRouter;

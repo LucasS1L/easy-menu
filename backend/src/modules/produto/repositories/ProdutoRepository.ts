@@ -47,4 +47,8 @@ export class ProdutoRepository {
     public async update(produto: Produto): Promise<void> {
         await this.ormRepository.save(produto);
     }
+
+    public async delete(produto: Produto): Promise<void> {
+        await this.ormRepository.remove(produto);
+    }
 }
