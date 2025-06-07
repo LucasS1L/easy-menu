@@ -30,4 +30,17 @@ produtoRouter.post("/",
     produtoController.create
 );
 
+produtoRouter.patch("/:id",
+    celebrate({
+        [Segments.PARAMS]: {
+            id: Joi.number().integer().min(1).required(),
+        },
+        [Segments.BODY]: Joi.object().keys({
+            nome: Joi.string().trim().max(50).optional(),
+            descricao: Joi.string().trim().max(300).optional(),
+        }).or("nome", "descricao"),
+    }),
+    produtoController.update
+);
+
 export default produtoRouter;

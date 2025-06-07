@@ -3,6 +3,7 @@ import {container} from "tsyringe";
 import ListProdutoService from "../services/ListProdutoService";
 import ShowProdutoService from "../services/ShowProdutoService";
 import CreateProdutoService from "../services/CreateProdutoService";
+import UpdateProdutoService from "../services/UpdateProdutoService";
 import produtoResponseDTO from "../dto/produtoResponseDTO";
 import toDTOList from "../../../shared/util/toDTOList";
 
@@ -26,6 +27,15 @@ export default class ProdutoController {
         const produto = await createProduto.execute({
             nome, descricao, subcategoriaId, tamanho, preco
         });
+        return response.json(produtoResponseDTO(produto));
+    }
+
+    public async update(request: Request, response: Response): Promise<Response> {
+        const {id} = request.params;
+        const {nome, descricao} = request.body;
+
+        const updateProduto = container.resolve(UpdateProdutoService);
+        const produto = await updateProduto.execute({id: Number(id), nome, descricao});
         return response.json(produtoResponseDTO(produto));
     }
 }

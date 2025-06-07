@@ -43,4 +43,8 @@ export class ProdutoRepository {
         await this.ormRepository.save(produto);
         return produto;
     }
+
+    public async update(produto: Produto): Promise<void> {
+        await this.ormRepository.save(produto);
+    }
 }
