@@ -1,7 +1,7 @@
 import { Layout} from 'antd';
 import MenuList from '../MenuList/MenuList.tsx';
 import  {LogoContainer,MainContainer} from '../../Pages/Home/HomeStyle.ts'; 
-import Logo from '../../../public/logo.jpeg';
+import Logo from '../../../public/logo.png';
 
 
 const { Sider } = Layout;

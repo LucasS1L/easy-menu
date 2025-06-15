@@ -119,8 +119,8 @@ export const ProductMenuGenerator = () => {
     }
 
     return (
-        <div style={{width:'50%', display: 'flex', alignItems: 'center', justifyContent: 'center', paddingRight:"5vh"}}>
-            <Button type="primary" htmlType="submit" style={{ width: "50%" }} onClick={handleDownloadPDF}>Baixar Cardápio</Button>
+        <div style={{width:'50%', display: 'flex', alignItems: 'center', justifyContent: 'center', paddingRight:"5vh", paddingLeft:"3%"}}>
+            <Button type="primary" htmlType="submit" style={{ width: "50%", backgroundColor:"red" }} onClick={handleDownloadPDF}>Baixar Cardápio</Button>
         </div>
     );
 };
