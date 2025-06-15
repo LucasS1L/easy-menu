@@ -9,14 +9,3 @@ services:
       - ./data:/data/postgres
     ports:
       - "5432:5432"
-  backend:
-    restart: unless-stopped
-    depends_on:
-      - database
-    build:
-      context: ./backend
-    env_file:
-      - ./backend/.env
-    ports:
-      - "3000:3333"
-
