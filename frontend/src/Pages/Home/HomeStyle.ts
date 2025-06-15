@@ -5,7 +5,7 @@ import { styled } from "styled-components";
 
 export const LogoContainer = styled.img`
     width: 100%;
-    height: 20%;
+    height: 27vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,13 +22,6 @@ export const MainContainer = styled.main`
 `
 export const Image = styled.img`
     width: 30vw;
-    height: 50vh;
+    height: 60vh;
     background: transparent;
-`
-export const Slogan = styled.p`
-    padding: 1.2rem 2rem 1.2rem 0;
-    font-family: "Fascinate Inline", system-ui;
-    font-size: ${(props) => props.theme.fontSizes.large};
-    font-weight: 400;
-    font-style: normal;
 `

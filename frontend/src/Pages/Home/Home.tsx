@@ -1,4 +1,4 @@
-import { Image, Slogan} from "./HomeStyle.ts";
+import { Image} from "./HomeStyle.ts";
 
 import HomeImage from "../../../public/homeImage.png";
 
@@ -13,7 +13,6 @@ export default function Home() {
                 <div style={{paddingTop:"8em"}}>
                     <Image src={HomeImage} alt="Home Image" />
                 </div>
-                <Slogan>Bem-Vindo</Slogan>
                 <ProductMenuGenerator/>
             </PageContainer>
 
